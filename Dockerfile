@@ -38,8 +38,8 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN mkdir /var/taskd \
-    && chown taskd:taskd /var/taskd
+RUN mkdir -p /var/taskd/pki \
+    && chown -R taskd:taskd /var/taskd
 VOLUME /var/taskd
 WORKDIR /var/taskd
 

@@ -2,15 +2,15 @@
 
 set -e
 
-set $PKI=$TASKDDATA"/pki"
+PKI=$TASKDDATA"/pki"
 
-if [ ! -d $PKI ]; then
-  ln -s /var/taskd-$TASKD_VERSION/pki /var/taskd/pki
-  taskd init
+if [ ! -d "$PKI" ]; then
+  cp -a /var/taskd-$TASKD_VERSION/pki/. /var/taskd/pki/
+  taskd init > /dev/null 2>&1
 fi
 
 # Generate self sign certificate if none exists
-if [ ! -f $PKI/ca.cert.pem ]; then
+if [ ! -f "$PKI/ca.cert.pem" ]; then
   cd /var/taskd/pki
 
   if [ "$CERT_CN" ]; then
@@ -39,6 +39,7 @@ if [ ! -f $PKI/ca.cert.pem ]; then
   taskd config --force log $TASKDDATA/taskd.log
   taskd config --force pid.file $TASKDDATA/taskd.pid
   taskd config --force server 0.0.0.0:53589
+  chown -R taskd:taskd $TASKDDATA
 fi
 
 if [ "$1" = 'taskd' -a "$(id -u)" = '0' ]; then
