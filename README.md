@@ -18,7 +18,7 @@ based on the details specified in the `docker-compose.yml`.
 `docker-compose stop`
 
 ### Creating a user on server
-- Open a shell: `docker exec -it $container bash`
+- Open a shell: `docker exec -it $container sh`
 - Create a group (if not done): `taskd add org '$group'`
 - Add user to group: `taskd add user '$group' '$username'`
 - Copy user key (refered to as `$cred`)

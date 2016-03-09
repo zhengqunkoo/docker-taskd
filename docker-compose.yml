@@ -1,5 +1,5 @@
 taskd:
-    build: .
+    build: docker/.
     volumes:
         - ./taskd:/var/taskd
     ports:

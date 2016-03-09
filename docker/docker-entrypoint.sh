@@ -1,32 +1,32 @@
-#!/bin/bash
-
+#!/bin/sh
 set -e
-
 PKI=$TASKDDATA"/pki"
 
 if [ ! -d "$PKI" ]; then
-  cp -a /var/taskd-$TASKD_VERSION/pki/. /var/taskd/pki/
+  mkdir -p $PKI
+  cp /usr/share/taskd/pki/generate* $PKI
+  cp /usr/share/taskd/pki/vars $PKI
   taskd init > /dev/null 2>&1
 fi
 
 # Generate self sign certificate if none exists
 if [ ! -f "$PKI/ca.cert.pem" ]; then
-  cd /var/taskd/pki
+  cd $PKI
 
   if [ "$CERT_CN" ]; then
-    sed -i "s/\(CN=\).*/\1$CERT_CN/" vars
+    sed -i "s/\(CN=\).*/\1'$CERT_CN'/" vars
   fi
   if [ "$CERT_ORGANIZATION" ]; then
-    sed -i "s/\(ORGANIZATION=\).*/\1$CERT_ORGANIZATION/" vars
+    sed -i "s/\(ORGANIZATION=\).*/\1'$CERT_ORGANIZATION'/" vars
   fi
   if [ "$CERT_COUNTRY" ]; then
-    sed -i "s/\(COUNTRY=\).*/\1$CERT_COUNTRY/" vars
+    sed -i "s/\(COUNTRY=\).*/\1'$CERT_COUNTRY'/" vars
   fi
   if [ "$CERT_STATE" ]; then
-    sed -i "s/\(STATE=\).*/\1$CERT_STATE/" vars
+    sed -i "s/\(STATE=\).*/\1'$CERT_STATE'/" vars
   fi
   if [ "$CERT_LOCALITY" ]; then
-    sed -i "s/\(LOCALITY=\).*/\1$CERT_LOCALITY/" vars
+    sed -i "s/\(LOCALITY=\).*/\1'$CERT_LOCALITY'/" vars
   fi
 
   ./generate
