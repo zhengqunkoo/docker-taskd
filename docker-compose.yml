@@ -1,0 +1,12 @@
+taskd:
+    build: .
+    volumes:
+        - ./taskd:/var/taskd
+    ports:
+        - "53589:53589"
+    environment:
+        CERT_CN: "taskd"
+        CERT_ORGANIZATION: "some org"
+        CERT_COUNTRY: "DE"
+        CERT_STATE: "Bavaria"
+        CERT_LOCALITY: "Munich"
