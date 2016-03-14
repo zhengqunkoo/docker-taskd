@@ -36,4 +36,4 @@ based on the details specified in the `docker-compose.yml`.
 - Start sync with `task sync init`
 
 ## Documentation
-https://taskwarrior.org/docs/
+[Taskwarrior docs](https://taskwarrior.org/docs/)
