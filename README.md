@@ -22,7 +22,7 @@ based on the details specified in the `docker-compose.yml`.
 - Create a group (if not done): `taskd add org '$group'`
 - Add user to group: `taskd add user '$group' '$username'`
 - Copy user key (refered to as `$cred`)
-- Create cert/key `cd pki` `./generate.client $user`
+- Create cert/key `cd pki` `gosu taskd ./generate.client $user`
 - Copy cert/key from the mounted volume or over `docker cp`
 
 ### Configure on client
