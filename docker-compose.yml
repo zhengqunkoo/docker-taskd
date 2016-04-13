@@ -1,5 +1,5 @@
 taskd:
-    build: docker/.
+    image: x4121/taskd:latest
     volumes:
         - ./taskd:/var/taskd
     ports:

@@ -1,5 +1,5 @@
 # Docker-Taskd
-Docker-Taskd is a containerized [Taskwarrior](https://taskwarrior.org/) server.
+[Docker-Taskd](https://hub.docker.com/r/x4121/taskd) is a containerized [Taskwarrior](https://taskwarrior.org/) server.
 
 ## Certificates
 If there are no keys provided in `/taskd/pki`,
@@ -7,8 +7,8 @@ the server will generate self-signed certificates
 based on the details specified in the `docker-compose.yml`.
 
 ## Requirements
-- Docker
-- docker-compose
+- [Docker](https://www.docker.com/)
+- [docker-compose](https://www.docker.com/products/docker-compose)
 
 ## Usage
 ### Starting server
