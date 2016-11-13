@@ -10,3 +10,4 @@ taskd:
         CERT_COUNTRY: "DE"
         CERT_STATE: "Bavaria"
         CERT_LOCALITY: "Munich"
+    restart: always
