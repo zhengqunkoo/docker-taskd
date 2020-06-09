@@ -1,7 +1,10 @@
-taskd:
+version: "2"
+
+services:
+  taskd:
     image: x4121/taskd:latest
     volumes:
-        - ./taskd:/var/taskd
+        - taskd-data:/var/taskd
     ports:
         - "53589:53589"
     environment:
@@ -11,3 +14,6 @@ taskd:
         CERT_STATE: "Bavaria"
         CERT_LOCALITY: "Munich"
     restart: always
+
+volumes:
+  taskd-data:
