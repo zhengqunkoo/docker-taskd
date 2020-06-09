@@ -39,6 +39,9 @@ if [ ! -f "$PKI/ca.cert.pem" ]; then
   taskd config --force log "$TASKDDATA/taskd.log"
   taskd config --force pid.file "$TASKDDATA/taskd.pid"
   taskd config --force server 0.0.0.0:53589
+  taskd add org "$TASKORG"
+  taskd add user "$TASKORG" "$TASKUSER" > taskd.add.user
+  ./generate.client "$TASKUSER"
   chown -R taskd:taskd "$TASKDDATA"
 fi
 

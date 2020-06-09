@@ -15,6 +15,8 @@ services:
         CERT_COUNTRY: "DE"
         CERT_STATE: "Bavaria"
         CERT_LOCALITY: "Munich"
+        TASKORG: "some org"
+        TASKUSER: "some user"
     restart: always
 
 volumes:
