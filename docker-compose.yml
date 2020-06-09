@@ -2,7 +2,9 @@ version: "2"
 
 services:
   taskd:
-    image: x4121/taskd:latest
+    build:
+      context: docker
+    container_name: taskd
     volumes:
         - taskd-data:/var/taskd
     ports:
